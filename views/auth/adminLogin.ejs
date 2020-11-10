@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link
+        href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/admin/style0.css">
+    <link rel="stylesheet" href="/css/admin/style1.css">
+    <link rel="stylesheet" href="/css/admin/style2.css">
+    <link rel="stylesheet" href="/css/admin/style3.css">
+    <link rel="stylesheet" href="/css/admin/style4.css">
+    <link rel="stylesheet" href="/css/admin/style5.css">
+    <link rel="stylesheet" href="/css/admin/style6.css">
+    <link rel="stylesheet" href="/css/admin/style7.css">
+    <link rel="stylesheet" href="/css/admin/style8.css">
+    <link rel="stylesheet" href="/css/admin/style9.css">
+    <link rel="stylesheet" href="/css/admin/auth.css">
+
+    <title>Login - Admin Dashboard</title>
+</head>
+
+<body class="layout-no-leftnav" data-new-gr-c-s-check-loaded="14.983.0">
+    <section class="login-section auth-section">
+        <div class="container">
+            <div class="row">
+                <div class="form-box col-lg-8 col-12 offset-lg-2">
+                    <h1 class="form-box-heading logo text-center">
+                        <span class="pe-icon pe-7s-box2 icon"></span><span class="highlight">App</span>IFY
+                    </h1>
+
+                    <div class="form-box-inner">
+                        <h2 class="title text-center">Login to Your Account</h2>
+                        <div class="reset-message"></div>
+                        <div class="row">
+                            <div class="form-container col-lg-5 col-12">
+                                <form class="login-form admin">
+                                    <div class="form-group email">
+                                        <label class="sr-only" for="login-email">Email</label>
+                                        <span class="fa fa-user icon"></span>
+                                        <input id="login-email" type="email" class="form-control login-email"
+                                            placeholder="Email or username" required>
+                                    </div>
+
+                                    <div class="form-group password">
+                                        <label class="sr-only" for="login-password">Password</label>
+                                        <span class="fa fa-lock icon"></span>
+                                        <input id="login-password" type="password" class="form-control login-password"
+                                            placeholder="Password" required>
+                                        <p class="forgot-password"><a href="/auth/admin/forgot-password">Forgot password?</a>
+                                        </p>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-block btn-primary">Login</button>
+                                    <div class="checkbox remember pt-2">
+                                        <label>
+                                            <input type="checkbox"> Remember me
+                                        </label>
+                                    </div>
+
+                                    
+                                </form>
+                            </div>
+
+                            <div class="social-btns col-lg-5 col-12 offset-lg-1">
+                                <div class="divider"><span>Or</span></div>
+                                <ul class="list-unstyled social-login">
+                                    <li>
+                                        <button class="social-btn twitter-btn btn" type="button"><i
+                                                class="fab fa-twitter"></i>Log in with Twitter</button>
+                                    </li>
+                                    <li>
+                                        <button class="social-btn facebook-btn btn" type="button"><i
+                                                class="fab fa-facebook-f"></i>Log in with Facebook</button>
+                                    </li>
+                                    <li>
+                                        <button class="social-btn github-btn btn" type="button"><i
+                                                class="fab fa-github-alt"></i>Log in with Github</button>
+                                    </li>
+                                    <li>
+                                        <button class="social-btn google-btn btn" type="button"><i
+                                                class="fab fa-google"></i>Log in with Google</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="copyright text-center">
+                © <script>document.write(new Date().getFullYear())</script> - Perfect Admin by
+                <br> <a href="https://wa.me/2349021020979?text=Hello Dev Flexible">Segun Flexible</a> 
+            </div>
+        </div>
+
+    </section>
+
+<script>
+    document.querySelector("form.admin").addEventListener("submit",(e)=>{
+        e.preventDefault();
+        const email = document.querySelector("input#login-email").value;
+        const password = document.querySelector("input#login-password").value;
+
+        const obj = {
+            email,
+            password
+        };
+
+        //Make A Post Request
+        fetch("/auth/admin/login",{method:"POST",headers:{"content-type":"application/json"}, body:JSON.stringify(obj)})
+        .then(res => {
+            if(res.status === 500){
+                document.querySelector(".reset-message").innerHTML = `<div class="alert alert-theme alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <strong>Oops!</strong> ${res.error}
+                        </div>`
+            }else if(res.status === 200){
+                window.location.reload()
+            }else{
+                document.querySelector(".reset-message").innerHTML = `<div class="alert alert-theme alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                    aria-hidden="true">×</span></button>
+                            <strong>Oops!</strong> ${res.error}
+                        </div>`
+            }
+        })
+        .catch(err => console.log(err))
+    })
+</script>
+<script src="/js/admin/js1.js"></script>
+<script src="/js/admin/js3.js"></script>
+</body>
+
+</html>

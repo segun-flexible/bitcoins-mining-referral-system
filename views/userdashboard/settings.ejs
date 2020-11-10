@@ -1,0 +1,246 @@
+<%- include('./partials/header'); %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+
+            <h1 class="app-page-title">Settings</h1>
+
+
+<div class="row g-4 settings-section">
+    <div class="col-12 col-md-4">
+        <h3 class="section-title">General</h3>
+        <div class="section-intro">Update your profile details, fullname, location etc,
+            this will be public when others visit your profile
+        </div>
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="app-card app-card-settings shadow-sm p-4">
+
+            <div class="app-card-body">
+                <form class="settings-form basic-settings">
+                    <div class="mb-3">
+                        <label for="setting-input-1 username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="setting-input-1" value="<%= user.username %>" readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-input-2 fullname" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="setting-input-2" value="<%= user.fullname %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-input-3 email" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="setting-input-3" value="<%= user.email %>" readonly="readonly">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-input-4 location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="setting-input-4" value="<%= user.location %>" >
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-input-5 website" class="form-label">Website</label>
+                        <input type="text" class="form-control" id="setting-input-5" value="<%= user.website %>">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="setting-input-6 bio" class="form-label">Bio (About Me)</label>
+                        <textarea class="form-control textarea-bio" id="setting-input-6"><%= user.bio %></textarea> 
+                    </div>
+                    
+                    <button type="submit" class="btn app-btn-primary">Save Changes</button>
+                </form>
+            </div>
+            <!--//app-card-body-->
+
+        </div>
+        <!--//app-card-->
+    </div>
+</div>
+
+<!--SETINGS-->
+
+
+<div class="row g-4 settings-section">
+    <div class="col-12 col-md-4">
+        <h3 class="section-title">Profile Picture</h3>
+        <div class="section-intro">
+            Change your profile picture and make your profile look more awesome 
+        </div>
+        
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="app-card app-card-settings shadow-sm p-4">
+
+            <div class="app-card-body">
+                
+                <form class="settings-form avatar">
+                    <div class="mb-3">
+                        <div class="profile-current-image">
+                            <img
+                                src="<%if(user.avatar){%>/profile/<%= user.id %>/avatar.jpg<%}else {%>/img/avatar.png<%}%>" alt="<%= user.username %>">
+                        </div>
+                        <br>
+                        <label for="setting-input-60" class="form-label">Profile Picture</label>
+                        <input type="file" style="height: 50px !important;" class="form-control avatar" id="setting-input-60" value="Lorem Ipsum Ltd."
+                            required>
+                    </div>
+                    
+                    <button type="submit" class="btn app-btn-primary">Update Profile Picture</button>
+                </form>
+            </div>
+            <!--//app-card-body-->
+
+        </div>
+        <!--//app-card-->
+    </div>
+</div>
+
+
+<!--CHANGE PASSWORD-->
+<div class="row g-4 settings-section">
+<div class="col-12 col-md-4">
+    <h3 class="section-title">Change Password</h3>
+    <div class="section-intro">
+        Change your password and make your account more secure!
+    </div>
+</div>
+<div class="col-12 col-md-8">
+    <div class="app-card app-card-settings shadow-sm p-4">
+
+        <div class="app-card-body">
+            <form class="settings-form password">
+               
+
+                <div class="mb-3">
+                    <label for="setting-input-8 password" class="form-label">New Password</label>
+                    <input type="password" class="form-control password" id="setting-input-8" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="setting-input-9 confirm-password" class="form-label">Confirm New Password</label>
+                    <input type="password" class="form-control password-confirm" id="setting-input-9" required>
+                </div>
+
+                <button type="submit" class="btn app-btn-primary">Change Password</button>
+            </form>
+        </div>
+        <!--//app-card-body-->
+
+    </div>
+    <!--//app-card-->
+</div>
+</div>
+
+
+
+        </div></div></div>
+
+
+<script>
+    const basicSettngsForm = document.querySelector("form.settings-form.basic-settings");
+    basicSettngsForm.addEventListener("submit",(e)=>{
+        e.preventDefault();
+
+        const fullName = document.querySelector("input#setting-input-2");
+        const email = document.querySelector("input#setting-input-3");
+        const locationSetting = document.querySelector("input#setting-input-4");
+        const website = document.querySelector("input#setting-input-5");
+        const bio = document.querySelector("textarea#setting-input-6");
+        
+        let obj = {
+            fullname:fullName.value,
+            email:email.value,
+            location:locationSetting.value,
+            website:website.value,
+            bio:bio.value
+        }
+
+        
+
+        fetch("/dashboard/basic-settings",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify(obj)
+        })
+        .then(res => {
+            
+            if(res.status === 400){
+                return alert("Something Went Wrong")
+            }else if(res.status >= 200 && res.status < 299 ){
+                alert("Profile Updated Succesfully");
+                window.location.reload()
+            }
+        })
+        
+        .catch(err => console.error(err))
+
+    })
+
+
+    //Update Password
+
+    document.querySelector("form.settings-form.password").addEventListener("submit",(e)=>{
+        e.preventDefault();
+
+        const password = document.querySelector("input.password");
+        const password2 = document.querySelector("input.password-confirm");
+
+        let obj = {
+            password:password.value
+        }
+
+        if(password.value === password2.value){
+            fetch("/dashboard/basic-settings/password", {
+                method: "POST",
+                headers: { "content-type": "application/json" },
+                body: JSON.stringify(obj)
+            })
+                .then(res => {
+
+                    if (res.status === 400) {
+                        return alert("Something Went Wrong")
+                    } else if (res.status >= 200 && res.status < 299) {
+                        alert("Password Updated Succesfully");
+                        window.location.reload()
+                    }
+                })
+
+                .catch(err => console.error(err))
+        }else{
+            alert("Password Not Matched!")
+        }
+    })
+
+//Update AVatar
+document.querySelector(".settings-form.avatar").addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    const file = document.querySelector("input.form-control.avatar");
+    let avatar = file.files[0];
+
+    let obj = new FormData();
+    obj.append("avatar",avatar);
+
+    fetch("/dashboard/basic-settings/avatar", {
+        method: "POST",
+        /* headers: { "content-type": "application/json" }, */
+        body: obj
+    }).then(res => {
+        if(res.status === 200){
+             alert("Profile Picture Updated!")
+             window.location.reload()
+        }else{
+            alert("Something went wrong")
+        }
+    })
+    
+
+})
+    
+</script>
+
+
+        <%- include('./partials/footer'); %>
+        

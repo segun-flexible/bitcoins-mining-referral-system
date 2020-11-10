@@ -1,0 +1,352 @@
+.module-projects-overview .data-list {
+  position: relative;
+  padding-left: 0;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+.module-projects-overview .item {
+  display: inline-block;
+  margin-bottom: 15px;
+}
+.module-projects-overview .item a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 15px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.module-projects-overview .item span {
+  display: block;
+}
+.module-projects-overview .item .icon {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+.module-projects-overview .item .data {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+.module-projects-overview .item .desc {
+  font-size: 12px;
+}
+.module-projects-overview .item-1 a {
+  background: #75c181;
+}
+.module-projects-overview .item-1 a:hover {
+  background: #63b971;
+}
+.module-projects-overview .item-2 a {
+  background: #f8a13f;
+}
+.module-projects-overview .item-2 a:hover {
+  background: #f79526;
+}
+.module-projects-overview .item-3 a {
+  background: #ea5395;
+}
+.module-projects-overview .item-3 a:hover {
+  background: #e73c87;
+}
+.module-projects-overview .item-4 a {
+  background: #8a40a7;
+}
+.module-projects-overview .title {
+  font-size: 14px;
+  color: #616670;
+  font-weight: 500;
+}
+.module-projects-overview .title .icon {
+  font-size: 18px;
+  color: #a2a6af;
+  display: inline-block;
+  margin-right: 5px;
+  position: relative;
+  top: 2px;
+}
+.module-projects-sales .figure-total {
+  margin-top: 0;
+  font-size: 36px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  color: #616670;
+  color: #75c181;
+  font-weight: 300;
+}
+.module-projects-sales .figure-total .meta {
+  font-size: 13px;
+  color: #616670;
+  vertical-align: super;
+  padding-left: 5px;
+}
+.module-projects-sales .list-currency {
+  overflow: hidden;
+}
+.module-projects-sales .list-currency li {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+.module-projects-sales .list-currency .flag {
+  max-width: 24px;
+  float: left;
+  margin-right: 15px;
+  margin-left: 5px;
+  position: relative;
+  top: -1px;
+}
+.module-projects-sales .list-currency .progress-container {
+  float: left;
+}
+.module-projects-sales .list-currency .progress-container .progress-pc {
+  color: #a2a6af;
+  margin-right: 2px;
+  line-height: 1;
+  float: left;
+  min-width: 30px;
+  margin-top: 3px;
+}
+.module-projects-sales .list-currency .progress-container .progress {
+  height: 20px;
+  margin-bottom: 0;
+  margin-right: 15px;
+}
+.module-projects-sales .list-currency .figure-sub {
+  float: left;
+  font-size: 14px;
+  line-height: 1;
+  margin-top: 2px;
+  color: #797f8b;
+}
+.module-projects-list .progress-container {
+  overflow: hidden;
+}
+.module-projects-list .progress-container .progress {
+  margin-bottom: 0;
+  max-width: 100px;
+  float: left;
+  margin-bottom: 5px;
+  margin-right: 5px;
+}
+.module-projects-list .progress-container .progress-pc {
+  color: #797f8b;
+  float: left;
+  line-height: 1;
+}
+.module-projects-list .truncate {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.module-projects-list .badge {
+  text-transform: uppercase;
+}
+.module-tickets th.number {
+  width: 40px;
+}
+.module-tickets .badge {
+  text-transform: uppercase;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.module-tickets .truncate {
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.module-projects-activities .tab-pane {
+  padding-top: 15px;
+}
+.module-projects-activities .item {
+  position: relative;
+  padding: 30px 0;
+  padding-left: 70px;
+  border-bottom: 1px solid #f3f3f7;
+}
+.module-projects-activities .item:first-child {
+  padding-top: 0;
+}
+.module-projects-activities .item:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+.module-projects-activities .item .profile {
+  position: absolute;
+  left: 0;
+}
+.module-projects-activities .item .profile .profile-inner {
+  position: relative;
+}
+.module-projects-activities .item .profile img {
+  width: 56px;
+  height: 56px;
+  display: inline-block;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.module-projects-activities .item .profile .status {
+  display: inline-block;
+  position: absolute;
+  right: -4px;
+  bottom: 5px;
+  width: 12px;
+  height: 12px;
+  background: #c3c3c3;
+  border: 2px solid #fff;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.module-projects-activities .item .profile .status.online {
+  background: #75c181;
+}
+.module-projects-activities .item .profile .status.busy {
+  background: #f8a13f;
+}
+.module-projects-activities .activity .summary {
+  margin-bottom: 10px;
+}
+.module-projects-activities .activity .summary .profile-name {
+  color: #797f8b;
+}
+.module-projects-activities .activity .summary .profile-name:hover {
+  color: #494d55;
+}
+.module-projects-activities .activity .excerpt {
+  margin-bottom: 15px;
+  background: #fafafa;
+  padding: 15px;
+  font-size: 12px;
+}
+.module-projects-activities .activity .excerpt a {
+  color: #616670;
+}
+.module-projects-activities .activity .excerpt a:hover {
+  color: #494d55;
+  text-decoration: none;
+}
+.module-projects-activities .activity .meta {
+  color: #868c97;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+.module-projects-activities .activity .meta a {
+  color: #9499a3;
+}
+.module-projects-activities .activity .meta a:hover {
+  color: #44b5c9;
+}
+.theme-2 .module-projects-activities .activity .meta a:hover {
+  color: #6dbd63;
+}
+.theme-3 .module-projects-activities .activity .meta a:hover {
+  color: #497cb1;
+}
+.theme-4 .module-projects-activities .activity .meta a:hover {
+  color: #ec6952;
+}
+.module-projects-activities .activity .meta .icon {
+  margin-right: 5px;
+}
+.module-projects-invoices .module-content-inner {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.module-projects-invoices .table {
+  margin-bottom: 0;
+}
+.module-projects-invoices .currency {
+  color: #9499a3;
+}
+.module-projects-invoices .date a {
+  color: #797f8b;
+}
+.module-projects-invoices .truncate {
+  max-width: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.world-map {
+  width: 100%;
+  height: 300px;
+  max-width: 100%;
+}
+@media (max-width: 767.98px) {
+  .module-projects-overview ul .item .icon {
+    font-size: 20px;
+  }
+  .module-projects-overview ul .item .data {
+    font-size: 32px;
+  }
+  .module-projects-overview ul .item .desc {
+    font-size: 12px;
+  }
+  .module-projects-sales .figure-total {
+    font-size: 32px;
+  }
+  .progress-container .progress {
+    width: 100px;
+  }
+  .module-projects-sales .list-currency .flag {
+    width: 20px;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .module-projects-sales .list-currency .figure-sub {
+    font-size: 14px;
+  }
+}
+@media (min-width: 768px) {
+  .progress-container .progress {
+    width: 100px;
+  }
+}
+@media (min-width: 992px) {
+  .progress-container .progress {
+    width: 120px;
+  }
+}
+@media (min-width: 1200px) {
+  .progress-container .progress {
+    width: 140px;
+  }
+  .module-projects-sales .list-currency .flag {
+    max-width: 20px;
+    margin-top: 4px;
+  }
+}
+@media (min-width: 1400px) {
+  .progress-container .progress {
+    width: 180px;
+  }
+  .module-projects-sales .list-currency .flag {
+    max-width: 24px;
+    margin-top: 0px;
+  }
+}

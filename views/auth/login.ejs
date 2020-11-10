@@ -1,0 +1,116 @@
+
+<%- include('./authHeader'); %>
+
+<div class="modal modal-auth modal-login show" id="login-modal" tabindex="-1" role="dialog"
+    aria-labelledby="loginModalLabel" aria-modal="true" style="position: relative !important;padding-right: 17px; display: block;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                
+                <h4 id="loginModalLabel" class="modal-title text-center">Log in</h4>
+            </div>
+            <div class="modal-body">
+                <div class="legal-note text-danger text-center"></div>
+                <div class="login-form-container">
+                    <form class="login-form">
+                        <div class="form-item email">
+                            <i class="material-icons icon"></i>
+                            <label class="sr-only" for="login-email">Email</label>
+                            <input id="login-email" name="login-email" type="email" class="form-control login-email"
+                                placeholder="Email" autocomplete>
+                        </div>
+                        <div class="form-item password">
+                            <i class="material-icons icon"></i>
+                            <label class="sr-only" for="login-password">Password</label>
+                            <input id="login-password" name="login-password" type="password"
+                                class="form-control login-password" placeholder="Password">
+                            <div class="extra">
+
+                                <div class="form-check remember">
+                                    <input class="form-check-input" type="checkbox" value="" id="RememberPassword">
+                                    <label class="form-check-label" for="RememberPassword">
+                                        Remember me
+                                    </label>
+                                </div>
+                                <div class="forgotten-password">
+                                    <a href="/forgot-password" id="resetpass-link">Forgotten password?</a>
+                                </div>
+                            </div>
+                            <!--//extra-->
+                        </div>
+                        <button type="submit" class="btn btn-cta btn-block btn-primary login-in">Log in</button>
+                    </form>
+                </div>
+                <!--//login-form-container-->
+
+                <div class="option-container">
+                    <div class="lead-text">Don't have an account?</div>
+                    <a class="signup-link btn btn-ghost-alt" id="signup-link" href="/register">Sign Up</a>
+                </div>
+                <!--//option-container-->
+            </div>
+            <!--//modal-body-->
+
+        </div>
+        <!--//modal-content-->
+    </div>
+    <!--//modal-dialog-->
+</div>
+
+
+<script>
+    const email = document.querySelector("input#login-email");
+    const password = document.querySelector("input#login-password");
+    const login = document.querySelector("button.btn.btn-cta.btn-block.btn-primary.login-in");
+    const form = document.querySelector("form.login-form");
+    const error = document.querySelector(".legal-note");
+
+    form.addEventListener("submit",(e)=>{
+        e.preventDefault();
+        error.textContent = "";
+
+    let loginDetails = {
+        email: email.value.toLowerCase().trim(),
+        password: password.value
+    };
+
+
+        if(validate()){
+            fetch("/login",{
+                method:"POST",
+                headers:{
+                    "content-type":"application/json"
+            },
+            body:JSON.stringify(loginDetails)
+            })
+            .then(res => {
+                if(res.status === 400){
+                    error.textContent = "Invalid Email/Password"
+                }else if (res.status === 200) {
+                        window.location.href = "/dashboard"
+                }
+                else{
+                    error.textContent = "Something Went Wrong"
+                }
+            })
+            
+
+
+
+
+        }else{
+            error.textContent = "Email/Password Cannot Be Empty"
+        }
+    })
+
+
+function validate(){
+    if(!email.value || !password.value){
+        return false
+    }
+
+    return true
+}
+</script>
+</body>
+</html>

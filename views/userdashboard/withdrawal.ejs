@@ -1,0 +1,280 @@
+<%- include('./partials/header'); %>
+
+<div class="app-wrapper">
+    <div class="app-content pt-3 p-md-3 p-lg-4">
+        <div class="container-xl">
+
+            <h1 class="app-page-title">Withdrawal</h1>
+
+            <div class="row g-4 mb-4">
+
+
+
+                <!--REFERRAL-->
+                <div class="col-12 col-lg-12">
+                    <div class="app-card app-card-stats-table h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Make Withdrawal</h4>
+                                </div>
+                                <!--//col-->
+
+                            </div>
+                            <!--//row-->
+                        </div>
+                        <!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="app-card app-card-settings shadow-sm p-4">
+
+                                <% if(settings.minwithdrawal <= user.earning){ %>
+                                    <div class="app-card-body">
+                                        <form class="settings-form make-withdrawal">
+                                    
+                                            <div class="mb-3">
+                                                <label for="setting-input-2" class="form-label">Your BTC wallet <span class="ml-2" data-container="body"
+                                                        data-toggle="popover" data-trigger="hover" data-placement="top"
+                                                        data-content="A working bitcoins wallet that you can use to recieve your withdrawal."
+                                                        data-original-title="" title=""><svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                            class="bi bi-info-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                                            <path
+                                                                d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z">
+                                                            </path>
+                                                            <circle cx="8" cy="4.5" r="1"></circle>
+                                                        </svg></span></label>
+                                                <input type="text" class="form-control btcaddress" id="setting-input-2"
+                                                    placeholder="e.g 19BY2XCgbDe6WtTVbTyzM9eR3LYr6VitWK" required="required">
+                                            </div>
+
+                                            <!--AMOUNT TO WITHDRAW-->
+                                            <div class="mb-3">
+                                                <label for="setting-input-123" class="form-label">Amount <span class="ml-2" data-container="body"
+                                                        data-toggle="popover" data-trigger="hover" data-placement="top"
+                                                        data-content="Amount to withdrawal e.g 5000" data-original-title=""
+                                                        title=""><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-info-circle" fill="currentColor"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z">
+                                                            </path>
+                                                            <path
+                                                                d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z">
+                                                            </path>
+                                                            <circle cx="8" cy="4.5" r="1"></circle>
+                                                        </svg></span></label>
+                                                <input type="number" class="form-control amount" id="setting-input-123"
+                                                    placeholder="e.g 19BY2XCgbDe6WtTVbTyzM9eR3LYr6VitWK" required="required" value="<%= settings.minwithdrawal %>">
+                                            </div>
+                                            <button type="submit" class="btn app-btn-primary">Make Withdrawal</button>
+                                        </form>
+                                    </div>
+                                    <!--//app-card-body-->
+                                <%} else{ %>
+                                       
+
+
+                                            <div class="app-card alert alert-dismissible shadow-sm mb-4 border-left-decoration" style="border-left:3px solid #a41d3c !important" role="alert">
+                                                <div class="inner">
+                                                    <div class="app-card-body p-3 p-lg-4">
+                                                        <h3 class="mb-3">Ouch!!,You Can't Withdraw</h3>
+                                                        <div class="row gx-5 gy-3">
+                                                            <div class="col-12 col-lg-9">
+                                            
+                                                                <div>The minimum amount for withdrawal is <span class="badge bg-success"><%= settings.minwithdrawal %> satoshi</span>, But you only have <span class="badge bg-danger"><%= user.earning %> satoshi</span></div>
+                                                            </div>
+                                                            <!--//col-->
+                                                            <div class="col-12 col-lg-3">
+                                                                <a class="btn app-btn-primary"
+                                                                    href="/page/eran"><svg
+                                                                        width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-arrow-down mr-2"
+                                                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path
+                                                                            d="M4 0h5.5v1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h1V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z">
+                                                                        </path>
+                                                                        <path d="M9.5 3V0L14 4.5h-3A1.5 1.5 0 0 1 9.5 3z"></path>
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M8 6a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 10.293V6.5A.5.5 0 0 1 8 6z">
+                                                                        </path>
+                                                                    </svg>Earn More Satoshi</a>
+                                                            </div>
+                                                            <!--//col-->
+                                                        </div>
+                                                        <!--//row-->
+                                                        
+                                                    </div>
+                                                    <!--//app-card-body-->
+                                            
+                                                </div>
+                                                <!--//inner-->
+                                            </div>
+                               <% } %>
+
+                            </div>
+                        </div>
+                        <!--//app-card-body-->
+                    </div>
+                    <!--//app-card-->
+                </div>
+                <!--//col-->
+
+<!--RECENT PENDING WITHDRAWAL-->
+<div class="col-12 col-lg-12">
+    <div class="app-card app-card-stats-table h-100 shadow-sm">
+        <div class="app-card-header p-3">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-auto">
+                    <h4 class="app-card-title">Your Recent Pending Withdrawal</h4>
+                </div>
+                <!--//col-->
+
+            </div>
+            <!--//row-->
+        </div>
+        <!--//app-card-header-->
+        <div class="app-card-body p-3 p-lg-4">
+            <div class="table-responsive">
+                <table class="table table-borderless mb-0">
+                    <thead>
+                        <tr>
+                            <th class="meta">Amout</th>
+                            <th class="meta stat-cell">Status</th>
+                            <th class="meta stat-cell">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% withdrawStatus.pending.map(pending =>{ %>
+                        <tr>
+                            <td><%= pending.amountTo %> satoshi</td>
+
+                            <td class="stat-cell"><% if(pending.status === "pending"){ %>
+                                <span class="badge bg-danger">Pending</span>
+                                <%}%></td>
+                
+                                            <td class="stat-cell">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+                                                </svg>
+                                                <%= pending.withdraw_At %>
+                            </td>
+                        </tr>
+                        <% }) %>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!--//table-responsive-->
+        </div>
+        <!--//app-card-body-->
+    </div>
+    <!--//app-card-->
+</div>
+<!--//col-->
+
+
+                <!--RECENT PAID WITHDRAWAL-->
+                <div class="col-12 col-lg-12">
+                    <div class="app-card app-card-stats-table h-100 shadow-sm">
+                        <div class="app-card-header p-3">
+                            <div class="row justify-content-between align-items-center">
+                                <div class="col-auto">
+                                    <h4 class="app-card-title">Your Recent Paid Withdrawal</h4>
+                                </div>
+                                <!--//col-->
+                                
+                            </div>
+                            <!--//row-->
+                        </div>
+                        <!--//app-card-header-->
+                        <div class="app-card-body p-3 p-lg-4">
+                            <div class="table-responsive">
+                                <table class="table table-borderless mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="meta">Amout</th>
+                                            <th class="meta stat-cell">Status</th>
+                                            <th class="meta stat-cell">Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% withdrawStatus.paid.map(paid =>{ %>
+                                        <tr>
+                                            <td><%= paid.amountTo %> satoshi</td>
+
+                                            <td class="stat-cell"><% if(paid.status === "paid"){ %>
+                                                <span class="badge bg-success">Paid</span>
+                                            <%}%></td>
+                
+                                            <td class="stat-cell">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-clock"
+                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm8-7A8 8 0 1 1 0 8a8 8 0 0 1 16 0z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z" />
+                                                </svg>
+                                                <%= paid.withdraw_At %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                
+                
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--//table-responsive-->
+                        </div>
+                        <!--//app-card-body-->
+                    </div>
+                    <!--//app-card-->
+                </div>
+                <!--//col-->
+
+            </div>
+            <!--//row-->
+
+
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer'); %>
+
+
+
+<script>
+   document.querySelector("form.settings-form.make-withdrawal").addEventListener("submit",(e)=>{
+       e.preventDefault();
+
+       const wallet = document.querySelector(".form-control.btcaddress").value;
+       const amountTo = document.querySelector(".form-control.amount").value;
+      
+       const obj = {
+           wallet,
+           amountTo
+       }
+
+       fetch("/dashboard/withdrawal",{
+           method:"POST",
+           headers:{"content-type":"application/json"},
+           body:JSON.stringify(obj)
+       })
+       .then(res => {
+           if(res.status === 200){
+               alert("You have successfully request for withdrawal, you will receive alert in the next 48 hrs");
+               window.location.reload()
+           }else if(res.status === 400){
+               alert("Insufficient Satoshi")
+           }else{
+               alert("Sorry!, You Have Pending Withdrawal Request!")
+           }
+       })
+       .catch(err => alert("Something Went Wrong, Try Again Later!"))
+
+       
+   })
+</script>
